@@ -18,6 +18,7 @@ void precalc () { // to count tags in each articles. Interact with python
   string s;
   int i = 0;
   while(getline(cin, s)){
+    if(s.empty()) cout << i << "<----\n";
     for(auto x : s){
       if(x == '~'){
         cnt[i][s]++;
@@ -45,7 +46,18 @@ vector<string> get_tags(){
   cin.clear();
   return cur;       
 }
-
+void print(int x){
+  x++;
+  if(1 <= x && x <= 50000){
+    cout << "1st file " << x << "-article" << "\n";
+  }
+  x -= 500000;
+  if(1 <= x && x <= 50000){
+    cout << "2nd file " << x << "-article" << "\n";
+  }
+  x -= 500000;
+  cout << "3rd file " << x << "-article\n";
+}
 int main () {
   precalc();
   freopen("KeyWords.in", "r", stdin);
@@ -68,6 +80,6 @@ int main () {
   reverse(vals, vals + n);     
   freopen("KeyWords.out", "w", stdout);
   for(int i = 0; i < 5; i++)
-    cout << vals[i].s << " - article\n";
+    print(vals[i].s);
   
 }     
